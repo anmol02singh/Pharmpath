@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; 
   gap: 14px;
   opacity: 0.7;
   max-width: 100%;
@@ -31,6 +31,7 @@
   font-size: var(--font-size-mini);
   color: var(--color-black);
   font-family: var(--font-phudu);
+  flex: 1; 
 }
 .header-donate,
 .header-language {
@@ -42,6 +43,7 @@
   font-weight: 500;
   color: inherit;
   min-width: 26px;
+  order: 1;
 }
 .header-donate {
   font-size: var(--font-size-base);
@@ -62,6 +64,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  order: 2;
 }
 .header-donate-container:hover,
 .hero-button-container:hover {
@@ -71,19 +74,21 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end; 
   gap: var(--gap-5xl);
+  flex: 1;
 }
 .sf-logo-icon {
   height: 44px;
   width: 78.3px;
-  position: absolute;
-  margin: 0 !important;
-  top: 6px;
-  left: calc(50% - 39px);
   overflow: hidden;
   flex-shrink: 0;
+  left: 50%; 
 }
+.menu-icon {
+  display:none;
+}
+
 .header-container {
   align-self: stretch;
   border-radius: var(--br-5xl);
@@ -91,7 +96,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: var(--padding-5xs) 0 var(--padding-5xs) var(--padding-xs);
+  padding: var(--padding-5xs) var(--padding-xs);
   box-sizing: border-box;
   position: relative;
   max-width: 100%;
@@ -194,7 +199,6 @@
   position: relative;
 }
 .screenshot-2025-01-14-at-900 {
-  position: absolute;
   height: 100.15%;
   width: 144.91%;
   top: 0;
@@ -279,6 +283,7 @@
   grid-template-columns: 672px 688px;
   grid-row-gap: 0;
   grid-column-gap: 16px;
+  max-width: 100%;
 }
 .main {
   display: flex;
@@ -294,7 +299,7 @@
 .logo-1-2,
 .logo-1-4 {
   height: 64px;
-  width: 300px;
+  margin-right: 1rem;
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
@@ -304,9 +309,7 @@
 }
 .logos {
   margin-left: -184px;
-  width: 1624px;
   background-color: #f5f6f9;
-  overflow-x: auto;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -314,7 +317,6 @@
   padding: 36px 0;
   box-sizing: border-box;
   gap: var(--gap-21xl);
-  max-width: 119%;
 }
 .program-overview-title {
   margin: 0;
@@ -1018,16 +1020,46 @@
   line-height: normal;
   letter-spacing: normal;
 }
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1024px) {
   .left {
     flex: 1;
+    max-width: fit-content;
+  }
+  .image-description-container {
+    left: -150px;
+  }  
+  .header-language {
+    order:2;
+  }
+  .img-section{
+    max-width: min-content;
+  }
+  .pharmpath {
+    padding: var(--padding-xl) var(--padding-5xl) var(--padding-5xl);
+  }
+  .header-donate-container{
+    order:1;
+  }
+  .menu-icon{
+    order: 3;
+  }
+  .menu-icon {  
+    display: block;
+  }
+  .header-links-container {
+    display: none;
+  }
+  .sf-logo-icon {
+    position: static; 
+    left: auto;
+    transform: none; 
+    margin-right: auto; 
+  }
+  .header-language-container {
+    margin-left: auto; 
   }
   .content {
-    flex-wrap: wrap;
-    display: grid;
-    grid-template-columns: 672px 688px;
-    grid-row-gap: 0;
-    grid-column-gap: 16px;
+    grid-template-columns: 511px 688px;
   }
   .text-block {
     flex: 1;
@@ -1052,7 +1084,49 @@
     box-sizing: border-box;
   }
 }
-@media screen and (max-width: 1125px) {
+@media screen and (max-width: 744px) {
+  .header-links-container {
+    display: none;
+  }
+  .left{
+    height: 522px;
+    width: 340px;
+    padding: 50px 30px;
+  }
+  .header-language-container {
+    gap: var(--gap-base);
+  }
+  .hero-description{
+    font-size: 43px;
+  }
+  .program-overview-description {
+    font-size: var(--font-size-base);
+  }
+  .hero-button-text {
+    font-size: var(--font-size-base);
+  }
+  .hero-button-container {
+    padding: 15px 13px;
+  }
+  .hero-description1 {
+    gap: var(--gap-xl);
+  }
+  .content {
+    grid-template-columns: 341px 688px;
+  }
+  .img-section {
+    min-width: 340px;
+  }
+  .hero-image-description {
+    font-size: var(--font-size-base);
+  }
+  .image-description-container {
+    width: 630px;
+    gap: 330px;
+  }
+  .credits-container {
+    padding: 0 5px;
+  }
   .article {
     min-height: auto;
   }
@@ -1073,13 +1147,19 @@
     min-width: 100%;
   }
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 440px) {
   .header-links-container {
     display: none;
   }
   .hero-description {
     font-size: var(--font-size-32xl);
     line-height: 51px;
+  }
+  .pharmpath{
+    padding: 16px 16px;
+  }
+  .header-language-container {
+    gap: var(--gap-base);
   }
   .left {
     padding-top: var(--padding-39xl);
@@ -1168,7 +1248,7 @@
     gap: 62px;
   }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 320px) {
   .hero-title {
     font-size: var(--font-size-lgi);
     line-height: 22px;
